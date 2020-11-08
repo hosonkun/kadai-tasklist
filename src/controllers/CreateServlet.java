@@ -41,9 +41,6 @@ public class CreateServlet extends HttpServlet {
 
             Task m = new Task();
 
-            String title = request.getParameter("title");
-            m.setTitle(title);
-
             String content = request.getParameter("content");
             m.setContent(content);
 
@@ -58,7 +55,7 @@ public class CreateServlet extends HttpServlet {
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("message", m);
                 request.setAttribute("errors", errors);
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/new.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();

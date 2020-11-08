@@ -49,9 +49,6 @@ public class UpdateServlet extends HttpServlet {
 
             Task m = em.find(Task.class,  (Integer)(request.getSession().getAttribute("task_id")));
 
-            String title = request.getParameter("title");
-            m.setTitle(title);
-
             String content = request.getParameter("content");
             m.setContent(content);
 
@@ -67,7 +64,7 @@ public class UpdateServlet extends HttpServlet {
                 request.setAttribute("task", m);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/edit.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/edit.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
